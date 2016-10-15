@@ -1,0 +1,25 @@
+{
+  "name": "minisol-assist",
+  "version": "0.0.1",
+  "description": "minisol assist manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amadeyWebDev/minisol-assist.git"
+  },
+  "author": "minisol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amadeyWebDev/minisol-assist/issues"
+  },
+  "homepage": "https://github.com/amadeyWebDev/minisol-assist#readme",
+  "devDependencies": {
+    "consolidate": "^0.14.1",
+    "express": "^4.14.0",
+    "socketio": "^1.0.0",
+    "swig": "^1.4.2"
+  }
+}
