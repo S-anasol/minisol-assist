@@ -1,0 +1,13 @@
+{
+	"express" : {
+		"listen" : 3000,
+		"views"  : "templates",
+		"static" : "/public/"
+	},
+	"socketio" : {
+		"listen" : 3001
+	},
+	"server" : {
+		"port" : 3000
+	}
+}
