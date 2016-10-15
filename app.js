@@ -6,6 +6,7 @@ var pathLoader = require('path');
 var consolidate = require('consolidate');
 var swig = require('swig');
 var Application = express();
+var SocketIO = require("socket.io").listen(AppConfig.socketio.listen);
 
 /*load app routes*/
 var AppRoutes = require('./routes/index');

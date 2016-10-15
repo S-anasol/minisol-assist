@@ -2,7 +2,7 @@
 	"express" : {
 		"listen" : 3000,
 		"views"  : "templates",
-		"static" : "public"
+		"static" : "/public/"
 	},
 	"socketio" : {
 		"listen" : 3001
