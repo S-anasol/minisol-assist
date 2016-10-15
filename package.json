@@ -18,6 +18,7 @@
   "homepage": "https://github.com/amadeyWebDev/minisol-assist#readme",
   "devDependencies": {
     "consolidate": "^0.14.1",
+    "curlrequest": "^0.5.7",
     "express": "^4.14.0",
     "socketio": "^1.0.0",
     "swig": "^1.4.2"

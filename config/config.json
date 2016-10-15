@@ -9,5 +9,12 @@
 	},
 	"server" : {
 		"port" : 3000
+	},
+	"vox" : {
+		"api" : "https://api.voximplant.com/platform_api/",
+		"app_key" : "d0352867-fd44-4e9c-9323-a9f852e88098",
+		"acc_name" : "andreym",
+		"app_name" : "videoconf",
+		"secret"   : "zJurrVTE283310"
 	}
 }
