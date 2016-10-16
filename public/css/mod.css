@@ -1,0 +1,196 @@
+/* START Mod |-----|-----|-----|-----|-----| */
+
+/* background: [background-color] [background-image] [background-repeat] [background-attachment] [background-position]; */
+
+.clear {
+    display: block;
+    clear: both;
+}
+.hidden {
+    display: none;
+}
+.select-no {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Обнуление поля у объекта */
+.padding-no { padding: 0 !important; }
+.padding-no-tb { padding-top: 0 !important; padding-bottom: 0 !important; }
+.padding-no-lr { padding-left: 0 !important; padding-right: 0 !important; }
+.padding-no-top { padding-top: 0 !important; }
+.padding-no-bottom { padding-bottom: 0 !important; }
+.padding-no-left { padding-left: 0 !important; }
+.padding-no-right { padding-right: 0 !important; }
+
+/* Обнуление оступjd у объекта */
+.margin-no { margin: 0 !important; }
+.margin-no-tb { margin-top: 0 !important; margin-bottom: 0 !important; }
+.margin-no-lr { margin-left: 0 !important; margin-right: 0 !important; }
+.margin-no-top { margin-top: 0 !important; }
+.margin-no-bottom { margin-bottom: 0 !important; }
+.margin-no-left { margin-left: 0 !important; }
+.margin-no-right { margin-right: 0 !important; }
+
+/* Поля среднего размера */
+.padding-normal { padding: 1.5em !important; }
+.padding-top-normal { padding-top: 1.5em !important; }
+.padding-bottom-normal { padding-bottom: 1.5em !important; }
+.padding-left-normal { padding-left: 1.5em !important; }
+.padding-right-normal { padding-right: 1.5em !important; }
+
+/* Отступы среднего размера */
+.margin-normal { margin: 1.5em !important; }
+.margin-top-normal { margin-top: 1.5em !important; }
+.margin-bottom-normal { margin-bottom: 1.5em !important; }
+.margin-left-normal { margin-left: 1.5em !important; }
+.margin-right-normal { margin-right: 1.5em !important; }
+
+/* Выравнивание по-вертикали */
+.align-top,
+.align-top > img,
+.align-top > span,
+.align-top > p,
+.align-top > div {
+    display: inline-block;
+    vertical-align: top !important;
+}
+.align-middle,
+.align-middle > img,
+.align-middle > span,
+.align-middle > p,
+.align-middle > div {
+    display: inline-block;
+    vertical-align: middle !important;
+}
+.align-bottom,
+.align-bottom > img,
+.align-bottom > span,
+.align-bottom > p,
+.align-bottom > div {
+    display: inline-block;
+    vertical-align: bottom !important;
+}
+
+/* Размер текста */
+.txt-xs { font-size: 14px; line-height: 1.4em; font-weight: 400; }
+.txt-s { font-size: 16px; line-height: 1.4em; }
+.txt-m { font-size: 18px; line-height: 1.5em; }
+.txt-l { font-size: 24px; line-height: 1.3em; }
+.txt-xl { font-size: 30px; line-height: 1.25em; }
+.txt-xxl { font-size: 45px; line-height: 1.25em; }
+
+/* Межстрочное расстояние */
+.txt-h-normal { display: inline-block; line-height: 1; }
+
+/* Жирность текста */
+.txt-thin { font-weight: 100; }
+.txt-light { font-weight: 300; }
+.txt-regular { font-weight: 400; }
+.txt-medium { font-weight: 500; }
+.txt-semi-bold { font-weight: 600; }
+.txt-bold { font-weight: 700; }
+.txt-extra-bold { font-weight: 800; }
+.txt-black { font-weight: 900; }
+
+/* Выравнивание текста */
+.txt-left { text-align: left !important; }
+.txt-center { text-align: center !important; }
+.txt-right { text-align: right !important; }
+.txt-justify {
+    text-align: justify !important;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Цвет текста */
+.txt-white { color: #fff !important; }
+.txt-black { color: #000 !important; }
+.txt-grey { color: #dbdbdb !important; }
+.txt-grey-light { color: #f9f9f9 !important; }
+.txt-grey-dark { color: #7f7f7f !important; }
+.txt-red { color: #ff1100 !important; }
+.txt-orange { color: #F60 !important; }
+.txt-yellow { color: #fffc00 !important; }
+.txt-green { color: #8FEE15 !important; }
+.txt-turquoise { color: #00ec9d !important; }
+.txt-blue { color: #09F !important; }
+.txt-pink { color: #ff0060 !important; }
+
+.txt-uppercase { text-transform: uppercase; }
+
+/* Цвет фигуры */
+svg.white { fill: #fff; }
+
+/* Цвет фона */
+.bg-white { background-color: #fff !important; }
+.bg-black { background-color: #000 !important; }
+.bg-grey { background-color: #dbdbdb !important; }
+.bg-grey-light { background-color: #f9f9f9 !important; }
+.bg-grey-dark { background-color: #7f7f7f !important; }
+.bg-red { background-color: #ff1100 !important; }
+.bg-orange { background-color: #F60 !important; }
+.bg-yellow { background-color: #fffc00 !important; }
+.bg-green { background-color: #8FEE15 !important; }
+.bg-turquoise { background-color: #00ec9d !important; }
+.bg-blue { background-color: #09F !important; }
+.bg-pink { background-color: #ff0060 !important; }
+
+/* Рамка */
+.border { border: 2px solid; }
+.border-top { border-top: 2px solid; }
+.border-bottom { border-bottom: 2px solid; }
+.border-left { border-left: 2px solid; }
+.border-right { border-right: 2px solid; }
+
+/* Отключение рамки */
+.border-off-top { border-top: none !important; }
+.border-off-bottom { border-bottom: none !important; }
+.border-off-left { border-left: none !important; }
+.border-off-right { border-right: none !important; }
+
+/* Стиль рамки */
+.border-solid { border-style: solid; }
+.border-double { border-style: double; }
+.border-dash { border-style: dashed; }
+.border-dot { border-style: dotted; }
+
+/* Толщина рамки */
+.border-thin { border-width: 1px !important; }
+.border-light { border-width: 2px !important; }
+.border-normal { border-width: 3px !important; }
+.border-medium { border-width: 5px !important; }
+.border-bold { border-width: 8px !important; }
+
+/* Цвет рамки */
+.border-white { border-color: #fff !important; }
+.border-black { border-color: #000 !important; }
+.border-grey { border-color: #dbdbdb !important; }
+.border-grey-light { border-color: #f1f1f1 !important; }
+.border-grey-dark { border-color: #7f7f7f !important; }
+.border-red { border-color: #ff1100 !important; }
+.border-orange { border-color: #F60 !important; }
+.border-yellow { border-color: #fffc00 !important; }
+.border-green { border-color: #8FEE15 !important; }
+.border-turquoise { border-color: #00ec9d !important; }
+.border-blue { border-color: #09F !important; }
+.border-pink { border-color: #ff0060 !important; }
+
+/* Прозрачность */
+.opacity-90 { opacity: 0.9; }
+.opacity-80 { opacity: 0.8; }
+.opacity-70 { opacity: 0.7; }
+.opacity-60 { opacity: 0.6; }
+.opacity-50 { opacity: 0.5; }
+.opacity-40 { opacity: 0.4; }
+.opacity-30 { opacity: 0.3; }
+.opacity-20 { opacity: 0.2; }
+.opacity-10 { opacity: 0.1; }
+
+/* END Mod |-----|-----|-----|-----|-----| */
