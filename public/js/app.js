@@ -42,10 +42,10 @@ minisolAssisVox.addEventListener(VoxImplant.Events.MicAccessResult, onMicAccessR
 
 /*rewrite api functions*/
 minisolAssisVox.writeLog = function(message) {
-	console.log('LOG: ',message);
+	//console.log('LOG: ',message);
 }
 minisolAssisVox.writeTrace = function(message) {
-	console.log('TRACE: ', message);
+	//console.log('TRACE: ', message);
 }
 
 
@@ -220,9 +220,9 @@ function outboundP2Pcall_failed(e) {
 }
 
 function minisolAssisRemoveCall(call, ptsn) {
-	if (typeof pstn == "undefined") pstn = false;
+	if (typeof ptsn == "undefined") ptsn = false;
 	
-	if (pstn === true) {
+	if (ptsn === true) {
 		for(var i in VoxMultiPeers) {
 			if(VoxMultiPeers[i].call.number() == call) {
 				$('#' + VoxMultiPeers[i].call.number()).remove();
@@ -286,4 +286,11 @@ function minisolAssistEventSDK()
 setTimeout(function(){
 	$('#loader').remove();
 	minisolAssistEventSDK();
-}, 100);
+}, 2500);
+
+
+/*jquery bind*/
+$(document).ready(function() {
+
+});
+
