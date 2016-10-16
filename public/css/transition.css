@@ -1,0 +1,21 @@
+/* START Transition |-----|-----|-----|-----|-----| */
+.transition,
+a, button,
+.link, .button,
+.header .logo .logo-link svg,
+.message-assist-link,
+.chat .message-new .message-new-send {
+    -webkit-transition: all 0.3s ease 0.2s;
+    -moz-transition: all 0.3s ease 0.2s;
+    -o-transition: all 0.3s ease 0.2s;
+    transition: all 0.3s ease 0.2s;
+}
+.transition-no {
+    /* Отключение плавной анимации */
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+/* END Transition |-----|-----|-----|-----|-----| */

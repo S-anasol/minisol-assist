@@ -17,3 +17,11 @@ var Query = function(){
 	}
 	return query_string;
 }();
+
+var Helper = {
+	getNameFromURI : function(uri) {
+		if (uri.indexOf('@') != -1) uri = uri.substr(0, uri.indexOf('@'));
+		uri = uri.replace("sip:", "");
+		return uri;
+	}
+};
