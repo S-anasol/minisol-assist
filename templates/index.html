@@ -33,7 +33,7 @@
 	<div class="assist-wrap">
 
 	<div class="media">
-		<a class="call-end" href="#">
+		<a class="call-end" href="#" id="call-end-triggered">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M86.5,31.3l-0.2-0.1c-3.5-1.6-7.2-2.9-10.8-4l-0.1,0l0,0c-16.3-4.9-33.6-5-50.1-0.7l0,0l-0.1,0   c-3.5,0.9-12.8,4.3-13.5,4.6c-0.1,0-0.2,0.1-0.2,0.1c0,0,0,0,0,0C3.3,35.5-0.7,45,2.4,53.9l0.7,1.9c1.7,5,7.2,7.7,12.2,6l10.5-3.6   c5-1.7,7.7-7.2,6-12.2l-0.8-2.5c12.6-3,25.7-2.7,38.1,0.9l-0.8,2.2c-1.9,5,0.6,10.5,5.5,12.4l10.4,4c5,1.9,10.5-0.6,12.4-5.5   l0.7-1.9C100.9,45.8,96.1,35,86.5,31.3z M52.3,72V49.7h-7.7v22.4l-5.7-5.7l-4.8,4.8l14.3,14.3l14.3-14.3l-4.8-4.8L52.3,72z"/></svg>
 		</a>
 		<span id="videos"></span>
@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="chat">
-		<ol class="message-list">
+		<ol class="message-list" id="message-list">
 			<!-- <li class="message-wrap message-my-not">
 				<span class="message">
 					Очень длинное тестовое сообщенние в этом коротком чате написанном сегодня вечером или утром уже не разобрать.
@@ -160,8 +160,8 @@
 
 		</ol>
 		<form class="message-new">
-			<a class="message-new-send" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14 8c-.256 0-.512-.098-.707-.293l-5.293-5.293-5.293 5.293c-.391.391-1.023.391-1.414 0s-.391-1.023 0-1.414l6-6c.391-.391 1.023-.391 1.414 0l6 6c.391.391.391 1.023 0 1.414-.195.195-.451.293-.707.293zM8 16c-.552 0-1-.447-1-1v-14c0-.552.448-1 1-1s1 .448 1 1v14c0 .553-.448 1-1 1z"/></svg></a>
-			<textarea class="message-new-text" placeholder="Сообщение"></textarea>
+			<a class="message-new-send" href="#" id="send-new-message"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M14 8c-.256 0-.512-.098-.707-.293l-5.293-5.293-5.293 5.293c-.391.391-1.023.391-1.414 0s-.391-1.023 0-1.414l6-6c.391-.391 1.023-.391 1.414 0l6 6c.391.391.391 1.023 0 1.414-.195.195-.451.293-.707.293zM8 16c-.552 0-1-.447-1-1v-14c0-.552.448-1 1-1s1 .448 1 1v14c0 .553-.448 1-1 1z"/></svg></a>
+			<textarea class="message-new-text" placeholder="Сообщение" id="message-text"></textarea>
 		</form>
 	</div>
 </div>
