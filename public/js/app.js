@@ -448,4 +448,3 @@ $(document).ready(function(){
 		window.recognitor.startListening();
 	}
 });
->>>>>>> release/BUILD_ALFA
