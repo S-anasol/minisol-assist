@@ -413,16 +413,26 @@
     background-color: #EF3E35;
     color: #fff;
     opacity: 1;
-
+    z-index: 3333;
     position: absolute;
     bottom: 20px;
     right: 50%;
     margin-left: -12px;
 }
+
+.media .call-end.new-call{
+    background-color: #20fc36;
+}
+
+.media .call-end.new-call svg{
+    transform: rotate(-114deg);
+}
+
 .media .call-end svg {
     fill: #fff;
     width: 100%;
     height: auto;
+    transition: all 0.3s ease 0s;
 }
 .media .call-end:hover {
     opacity: 0.8;
@@ -1072,4 +1082,8 @@
     margin-bottom: 10px;
     border: 1px solid #FFF;
     z-index: 1200;
+}
+
+.user-name{
+    display: none !important;
 }

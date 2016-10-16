@@ -10,6 +10,9 @@ var appConfig = {
 		acc_name : 'andreym',
 		connection_repeat : 2000,
 		auth_link : "@videoconf.andreym.voximplant.com"
+	},
+	recognitor : {
+		lang : 'ru-RU'
 	}
 };
 
@@ -122,6 +125,7 @@ function onIncomingCall(e) {
 function onMicAccessResult() {
 	console.log('onMicAccessResult');
 	minisolAssisVox.showLocalVideo(true);
+	SocketIO.emit('join-room',{room : VoxClientConnection.room});
 }
 
 /*connect to vox*/
@@ -248,6 +252,22 @@ function minisolAssistGetCall(name) {
 }
 
 
+
+function minisolAssistAuth(username) {
+	console.log('minisolAssistAuth');
+	minisolAssisVox.requestOneTimeLoginKey(username + appConfig.vox.auth_link);
+}
+
+function minisolAssistEventSDK()
+{
+	minisolAssisVox.init({ 
+		useRTCOnly: true,
+		micRequired: true, 
+		videoSupport: true,
+		videoContainerId : 'videos'
+	});
+}
+
 /*socket.events*/
 SocketIO.on('auth', function(data) {
 	console.log('auth', data);
@@ -265,21 +285,116 @@ SocketIO.on('auth-hash', function(data) {
 });
 
 
+SocketIO.on('new-message', function(data){
+	var classMessage = data.from == VoxClientConnection.display ? "message-my" : "message-my-not";
+	$('#message-list').append(
+		'<li class="message-wrap '+classMessage+'"><span class="user-name">'+data.from+'</span><span class="message">'+data.message+'</span></li>'
+	);
+});
 
-function minisolAssistAuth(username) {
-	console.log('minisolAssistAuth');
-	minisolAssisVox.requestOneTimeLoginKey(username + appConfig.vox.auth_link);
+SocketIO.on('messages', function(data) {
+	console.log('messages: ', data);
+	if(data && data.length > 0) { 
+		for(var i in data){
+			$('#message-list').append(
+				'<li class="message-wrap message-my-not"><span class="user-name">'+data[i].from+'</span><span class="message">'+data[i].message+'</span></li>'
+			);
+		}
+	}
+});
+
+SocketIO.on('rec', function(data) {
+	console.log('minisol assist recommendation: ', data);
+	if(data && data.string && data.link) {
+		var template = '<li class="message-wrap message-assist">';
+			template += '<a class="message-assist-link" href="'+data.link+'" target="_blank">';
+				if(data.img && data.img != ''){
+					template += '<span class="message-assist-wrap-preview">';
+						template += '<img class="message-assist-preview" src="'+data.img+'" />';
+					template += '</span>';
+				}
+				template += '<span class="message-assist-query">' +data.string+ '</span>'
+			template += '</a>';
+		template += '</li>';
+		$('#message-list').append(template);
+	}
+});
+
+
+
+
+/*speech to text*/
+window.recognitor = null;
+var GoogleSpeechRecognitor = function(){
+	var self = this;
+	this.defaultLang = 'ru-RU';
+	this.recognitor = null;
+	this.recognizing = true;
+	this.interim_transcript = '';
+
+	/*start listening*/
+	this.startListening = function(){
+		console.log('start listening');
+		self.recognitor = new webkitSpeechRecognition();
+		self.recognitor.continuous = true;
+		self.recognitor.interimResults = true;
+		self.recognitor.lang = appConfig.recognitor.lang;
+
+		self.recognitor.onresult = self.recognitorMessage;
+		self.recognitor.onstart = function(){
+			self.recognizing = true;
+		}
+		self.recognitor.onerror = self.recognitorError;
+		self.recognitor.onend = self.recognitorEnd;
+
+		self.recognitor.start();
+	}
+
+	/*speech result recognition*/
+	this.recognitorMessage = function(event) {
+		console.log('recognitor result: ', event);
+		var interim_transcript = '';
+		if (typeof(event.results) == 'undefined') {
+			self.recognitor.onend = null;
+			self.restartRecognitor();
+		}
+		
+		for (var i = event.resultIndex; i < event.results.length; ++i) {
+			if (event.results[i].isFinal) {
+				SocketIO.emit('minisol-assist-speech',{message : event.results[i][0].transcript,room : VoxClientConnection.room});
+			}
+		}
+	}
+	
+	/*error*/
+	this.recognitorError = function(event) {
+		console.log('rec error: ',event);
+		switch(event.error) {
+			case 'no-speech' : console.log('no-speech'); break;
+			case 'audio-capture' : console.error('no audio inputs');break;
+			case 'not-allowed' : console.log('not-allowed'); break;
+		}
+		
+	}
+
+	/*finish recognitor*/
+	this.recognitorEnd = function() {
+		self.restartRecognitor();
+	}
+
+	this.restartRecognitor = function() {
+		self.recognitor.stop();
+		self.recognizing = false;
+		window.recognitor = null;
+		//restart recognitor
+		window.recognitor = new GoogleSpeechRecognitor();
+		window.recognitor.startListening();
+	}
+
+	return this;
 }
 
-function minisolAssistEventSDK()
-{
-	minisolAssisVox.init({ 
-		useRTCOnly: true,
-		micRequired: true, 
-		videoSupport: true,
-		videoContainerId : 'videos'
-	});
-}
+
 
 
 
@@ -290,7 +405,47 @@ setTimeout(function(){
 
 
 /*jquery bind*/
-$(document).ready(function() {
+$(document).ready(function(){
+	$('body').on('click', '#call-end-triggered', function(event){
+		event.preventDefault();
+		if(!$(this).hasClass('new-call')) {
+			minisolAssisVox.disconnect();
+			$(this).addClass('new-call');
+		}else{
+			window.location.reload();
+		}
 
+		return false;
+	});
+
+	$('body').on('keypress', '#message-text', function(event){
+
+		if(event.keyCode == 13){
+			$('#send-new-message').trigger('click');
+			return false;
+		}
+	});
+
+
+	$('body').on('click', '#send-new-message', function(event){
+		event.preventDefault();
+		var text = $('#message-text').val();
+		if(text.length > 0){
+			SocketIO.emit('new-message',{
+				room : VoxClientConnection.room,
+				from : VoxClientConnection.display,
+				message : text
+			});
+			$('#message-text').val('');
+		}
+		return false;
+	});
+
+	if (!('webkitSpeechRecognition' in window)) {
+		console.error('your browser does not support speech recognitor');
+	}else{
+		window.recognitor = new GoogleSpeechRecognitor();
+		window.recognitor.startListening();
+	}
 });
-
+>>>>>>> release/BUILD_ALFA
